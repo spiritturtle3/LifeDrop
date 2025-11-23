@@ -2,10 +2,15 @@
     user-select: none;
 }
 
-body {
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .navbar {
@@ -211,6 +216,13 @@ footer{
     margin-top: -30px;
     background-color: rgb(21, 26, 56);
     height: 76px;
+    flex-shrink: 0;
+}
+
+section {
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 .foot {
@@ -222,3 +234,107 @@ footer{
     justify-content: center;
     align-items: center;   
 }
+
+.content {
+    flex: 1;
+}
+
+.about-hero {
+    margin-top: 0;
+    height: 250px;
+    background-color: rgb(219, 16, 16);
+    width: 100%;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-hero h1 {
+    margin-top: 0;
+    font-size: 48px;
+}
+
+.about-hero p {
+    font-size: 16px;
+}
+
+.about-txt {
+    margin: 70px;
+    color: rgb(203, 4, 4);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.about-txt h2 {
+    font-size: 40px;
+}
+
+.about-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    margin: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.about-box {
+    width: 262px;
+    border: 2px solid rgb(231, 212, 212);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 30px;
+}
+.about-box i {
+    font-size: 48px;
+}
+
+#d {
+    color: rgb(203, 4, 4);
+}
+
+#e {
+    color: rgba(231, 181, 88, 0.726);
+}
+
+#f {
+    color: goldenrod;
+}
+
+.about-box h3 {
+    font-size: 24px;
+    color: rgb(203, 4, 4);
+}
+
+.about-box p {
+    font-size: 16px;
+}
+
+.ques {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin-bottom: 40px;
+}
+
+.ques h2 {
+    font-size: 40px;
+    color: rgb(203, 4, 4);
+}
+
+.ques p {
+    font-size: 20px;
+    white-space: pre-line;
+    border: 2px solid rgb(231, 212, 212);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 15px;    
+}
+

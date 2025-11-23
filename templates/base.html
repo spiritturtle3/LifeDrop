@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='temp.css')}}">
 </head>
 <body>
-    <section>
         <div class="navbar">
             <div class="logo">
                 <div>
@@ -20,17 +19,17 @@
             </div>
             <div class="nav-links">
                 <ul>
-                    <a href="#"><li>Home</li></a>
-                    <a href="#"><li>About</li></a>
-                    <a href="#"><li>Requests</li></a>
-                    <a href="#"><li>Contact</li></a>
+                    <a href="{{ url_for('home')}}"><li>Home</li></a>
+                    <a href="{{ url_for('about')}}"><li>About</li></a>
+                    <a href="{{ url_for('contact')}}"><li>Contact</li></a>                                    
                 </ul>   
             </div>
-        </div>            
-    </section>
+        </div>
+    <div class="content">           
     {% block content %}
 
     {% endblock %}
+    </div> 
     <footer>
         <div class="foot">
             <p>© 2024 LifeDrop Blood Donation Network. All rights reserved.</p>
