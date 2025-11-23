@@ -66,6 +66,10 @@ a {
     font-weight: bold;
 }
 
+.nav-links li a {
+    transition: opacity 0.3s;
+}
+
 .hero {
     height: 350px;
     background-color: rgb(219, 16, 16);
@@ -112,6 +116,7 @@ a {
 }
 
 .txt {
+    margin: 70px;
     color: rgb(203, 4, 4);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
@@ -130,8 +135,90 @@ a {
 }
 
 .box {
-    width: 250px;
-    border: 2px solid rgba(255, 255, 255, 0.318);
+    width: 262px;
+    border: 2px solid rgb(231, 212, 212);
     border-radius: 20px;
-    box-shadow: inset;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 30px;
+}
+
+.box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(220,38,38,0.2);
+}
+
+.box i {
+    font-size: 48px;
+}
+
+#a {
+    color: rgb(89, 5, 161);
+}
+
+#b {
+    color: goldenrod;
+}
+
+#c {
+    color: rgb(125, 144, 148);
+}
+
+.box h3 {
+    font-size: 24px;
+    color: rgb(203, 4, 4);
+}
+
+.box p {
+    font-size: 16px;
+}
+
+.impact {
+    margin-top: 70px;
+    background-color: rgba(235, 234, 234, 0.814);
+    height: 350px;
+    padding: 20px;
+}
+
+.txt1 {
+    color: rgb(203, 4, 4);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.txt1 h2 {
+    font-size: 40px;
+}
+
+.container2 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.box1 {
+    width: 262px;
+    border: 2px solid rgb(231, 212, 212);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 30px;
+}
+
+footer{
+    margin: 0;
+    margin-top: -30px;
+    background-color: rgb(21, 26, 56);
+    height: 76px;
+}
+
+.foot {
+    display: flex;
+    height: 100%;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;   
 }
