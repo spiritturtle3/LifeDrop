@@ -11,12 +11,13 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar {
     height: 78px;
     width: 100%;
-    background-color: rgb(223, 3, 3);
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
     cursor: default;
     display: flex;
     justify-content: space-between;
@@ -47,7 +48,6 @@ a {
 
 .logo h2{
     font-size: 28.8px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
     cursor: pointer;
 }
@@ -65,10 +65,13 @@ a {
 }
 
 .nav-links li {
-    text-decoration: none;
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.nav-links li:hover {
+    transform: translateY(1px);
 }
 
 .nav-links li a {
@@ -77,13 +80,12 @@ a {
 
 .hero {
     height: 350px;
-    background-color: rgb(219, 16, 16);
+    background: linear-gradient(135deg, #f52525 0%, #991b1b 100%);
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
 }
 
@@ -123,7 +125,6 @@ a {
 .txt {
     margin: 70px;
     color: rgb(203, 4, 4);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 }
 
@@ -157,17 +158,9 @@ a {
     font-size: 48px;
 }
 
-#a {
-    color: rgb(89, 5, 161);
-}
-
-#b {
-    color: goldenrod;
-}
-
-#c {
-    color: rgb(125, 144, 148);
-}
+#a { color: rgb(89, 5, 161); }
+#b { color: goldenrod; }
+#c { color: rgb(125, 144, 148); }
 
 .box h3 {
     font-size: 24px;
@@ -180,14 +173,13 @@ a {
 
 .impact {
     margin-top: 70px;
-    background-color: rgba(235, 234, 234, 0.814);
+    background-color: rgba(238, 238, 238, 0.903);
     height: 350px;
     padding: 20px;
 }
 
 .txt1 {
     color: rgb(203, 4, 4);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 }
 
@@ -229,7 +221,6 @@ section {
     display: flex;
     height: 100%;
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
     justify-content: center;
     align-items: center;   
@@ -240,12 +231,10 @@ section {
 }
 
 .about-hero {
-    margin-top: 0;
     height: 250px;
     background-color: rgb(219, 16, 16);
     width: 100%;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
     display: flex;
     flex-direction: column;
@@ -253,7 +242,6 @@ section {
 }
 
 .about-hero h1 {
-    margin-top: 0;
     font-size: 48px;
 }
 
@@ -264,7 +252,6 @@ section {
 .about-txt {
     margin: 70px;
     color: rgb(203, 4, 4);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 }
 
@@ -278,7 +265,6 @@ section {
     gap: 20px;
     text-align: center;
     margin: auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .about-box {
@@ -289,21 +275,11 @@ section {
     transition: transform 0.3s, box-shadow 0.3s;
     padding: 30px;
 }
-.about-box i {
-    font-size: 48px;
-}
 
-#d {
-    color: rgb(203, 4, 4);
-}
-
-#e {
-    color: rgba(231, 181, 88, 0.726);
-}
-
-#f {
-    color: goldenrod;
-}
+.about-box i { font-size: 48px; }
+#d { color: rgb(203, 4, 4); }
+#e { color: rgba(231, 181, 88, 0.726); }
+#f { color: goldenrod; }
 
 .about-box h3 {
     font-size: 24px;
@@ -317,9 +293,7 @@ section {
 .ques {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     margin-bottom: 40px;
 }
 
@@ -334,7 +308,108 @@ section {
     border: 2px solid rgb(231, 212, 212);
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
     padding: 15px;    
 }
+
+.ctc-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    padding: 20px;
+    margin: 50px 0;
+}
+
+
+.ctc-info {
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 340px;
+    flex: 1;
+}
+
+.ctc-info p {
+    color: rgb(117, 117, 117);
+}
+
+.ctc-head-info h2 {
+    color: rgb(203, 4, 4);
+    font-size: 40px;
+}
+
+.ctc-txt-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ctc-txt-info i {
+    margin-right: 20px;
+}
+
+.cti h3 {
+    font-size: 18.72px;
+    margin-bottom: -15px;
+}
+
+.contact-form {
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 340px;
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #374151;
+    font-weight: 600;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #dc2626;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(220,38,38,0.3);
+}
+
 

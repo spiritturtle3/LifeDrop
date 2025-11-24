@@ -1,5 +1,65 @@
 {% extends 'base.html' %}
-
 {% block content %}
+<div class="ctc-container">
+    <div class="ctc-info">
+        <div class="ctc-head-info">
+            <h2>Get In Touch</h2>
+            <p>Have questions? We're here to help.</p>
+        </div>
+        <div class="ctc-txt-info">
+            <i class="fa-solid fa-map-pin"></i>
+            <div class="cti">
+                <h3>Address</h3>
+                <p>Healthcare Avenue Tumkur, TK 10001</p>
+            </div>
+        </div>
+        <div class="ctc-txt-info">
+            <i class="fa-solid fa-phone"></i>
+            <div class="cti">
+                <h3>Phone</h3>
+                <p>+91 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="ctc-txt-info">
+            <i class="fa-solid fa-envelope"></i>
+            <div class="cti">
+                <h3>Email</h3>
+                <p>support@lifedrop.org</p>
+            </div>
+        </div>
+        <div class="ctc-txt-info">
+            <i class="fa-solid fa-clock"></i>
+            <div class="cti">
+                <h3>Hours</h3>
+                <p>24/7 Emergency Support</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="contact-form">
+        <form action="/contact/submit" method="POST">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" name="phone">
+            </div>
+            <div class="form-group">
+                <label>Subject</label>
+                <input type="text" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
