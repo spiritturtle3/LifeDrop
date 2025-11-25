@@ -14,5 +14,9 @@ def about():
 def contact():
     return render_template('contact.html')
 
+@app.route('/home/dlogin')
+def dlogin():
+    return render_template('donor-login.html')
+
 if __name__ == "__main__":
     app.run(debug=True)

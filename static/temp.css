@@ -232,7 +232,7 @@ section {
 
 .about-hero {
     height: 250px;
-    background-color: rgb(219, 16, 16);
+    background: linear-gradient(135deg, #f71212 0%, #991b1b 100%);
     width: 100%;
     text-align: center;
     color: white;
