@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Blood - LifeLink</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='req.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🆘 Request Blood</h1>
+            <p>Fill out the form below and we'll connect you with donors immediately</p>
+        </div>
+
+        <div class="alert-box">
+            <h3>⚠️ For Emergency Situations</h3>
+            <p>If this is a life-threatening emergency, please call 911 or go to the nearest emergency room immediately.</p>
+        </div>
+
+        <form action="/blood-request/submit" method="POST">
+            <div class="form-group">
+                <label>Patient Name <span class="required">*</span></label>
+                <input type="text" name="patient_name" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Blood Type Required <span class="required">*</span></label>
+                    <select name="blood_type" required>
+                        <option value="">Select Blood Type</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Units Needed <span class="required">*</span></label>
+                    <input type="number" name="units" min="1" max="10" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Urgency Level <span class="required">*</span></label>
+                <div class="urgency-options">
+                    <div class="urgency-option">
+                        <input type="radio" id="urgent" name="urgency" value="urgent" required>
+                        <label for="urgent" class="urgency-label">
+                            🔴 URGENT<br>
+                            <small>(Within 6 hrs)</small>
+                        </label>
+                    </div>
+                    <div class="urgency-option">
+                        <input type="radio" id="soon" name="urgency" value="soon">
+                        <label for="soon" class="urgency-label">
+                            🟡 SOON<br>
+                            <small>(Within 24 hrs)</small>
+                        </label>
+                    </div>
+                    <div class="urgency-option">
+                        <input type="radio" id="scheduled" name="urgency" value="scheduled">
+                        <label for="scheduled" class="urgency-label">
+                            🟢 SCHEDULED<br>
+                            <small>(2-7 days)</small>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Hospital/Medical Facility <span class="required">*</span></label>
+                <input type="text" name="hospital" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>City <span class="required">*</span></label>
+                    <input type="text" name="city" required>
+                </div>
+
+                <div class="form-group">
+                    <label>State <span class="required">*</span></label>
+                    <input type="text" name="state" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Contact Person Name <span class="required">*</span></label>
+                <input type="text" name="contact_name" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Contact Phone <span class="required">*</span></label>
+                    <input type="tel" name="contact_phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Contact Email <span class="required">*</span></label>
+                    <input type="email" name="contact_email" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Additional Details</label>
+                <textarea name="details" placeholder="Any additional information that might help donors..."></textarea>
+            </div>
+
+            <button type="submit" class="btn">Submit Blood Request</button>
+        </form>
+
+        <div class="back-link">
+            <a href="{{ url_for('home') }}">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

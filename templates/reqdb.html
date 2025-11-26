@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requester Dashboard - LifeDrop</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='reqdb.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>🩸 LifeDrop</h1>
+        <div class="nav-right">
+            <span>Welcome, Sarah Johnson</span>
+            <a href="{{ url_for('home')}}">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="welcome-card">
+            <h2>Request Dashboard</h2>
+            <p>Track your blood requests and connect with donors who can help.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <div class="stat-number">3</div>
+                <div class="stat-label">Total Requests</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-number">2</div>
+                <div class="stat-label">Fulfilled Requests</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔔</div>
+                <div class="stat-number">1</div>
+                <div class="stat-label">Active Requests</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number">7</div>
+                <div class="stat-label">Donor Responses</div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="{{ url_for('request') }}" class="btn">+ New Blood Request</a>
+            <a href="#" class="btn btn-secondary">View All Requests</a>
+        </div>
+
+        <div class="section">
+            <h3>🔴 Active Requests</h3>
+            <div class="request-list">
+                <div class="request-card active">
+                    <div class="request-header">
+                        <span class="blood-type-badge">O+</span>
+                        <span class="status-badge status-active">ACTIVE</span>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-item">
+                            <span>👤</span>
+                            <span>Patient: Michael Davis</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>🏥</span>
+                            <span>City General Hospital</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>📅</span>
+                            <span>Posted: 2 hours ago</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>⏰</span>
+                            <span>Needed: Within 6 hours</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💉</span>
+                            <span>Units: 3</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>📞</span>
+                            <span>Contact: +1 (555) 123-4567</span>
+                        </div>
+                    </div>
+                    <div class="donor-responses">
+                        <h4>💚 Donor Responses (7)</h4>
+                        <div class="donor-list">
+                            <div class="donor-item">
+                                <div class="donor-info">
+                                    <div class="donor-avatar">JD</div>
+                                    <div>
+                                        <strong>John Doe</strong>
+                                        <div style="font-size: 0.875rem; color: #6b7280;">O+ • 1.2 km away • Available now</div>
+                                    </div>
+                                </div>
+                                <button class="contact-btn">Contact Donor</button>
+                            </div>
+                            <div class="donor-item">
+                                <div class="donor-info">
+                                    <div class="donor-avatar">EM</div>
+                                    <div>
+                                        <strong>Emma Miller</strong>
+                                        <div style="font-size: 0.875rem; color: #6b7280;">O+ • 2.8 km away • Available in 1 hour</div>
+                                    </div>
+                                </div>
+                                <button class="contact-btn">Contact Donor</button>
+                            </div>
+                            <div class="donor-item">
+                                <div class="donor-info">
+                                    <div class="donor-avatar">RS</div>
+                                    <div>
+                                        <strong>Robert Smith</strong>
+                                        <div style="font-size: 0.875rem; color: #6b7280;">O+ • 4.5 km away • Available today</div>
+                                    </div>
+                                </div>
+                                <button class="contact-btn">Contact Donor</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>📊 Request History</h3>
+            <div class="request-list">
+                <div class="request-card fulfilled">
+                    <div class="request-header">
+                        <span class="blood-type-badge">B+</span>
+                        <span class="status-badge status-fulfilled">FULFILLED</span>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-item">
+                            <span>👤</span>
+                            <span>Patient: Sarah Johnson</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>🏥</span>
+                            <span>St. Mary's Hospital</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>📅</span>
+                            <span>Posted: Oct 10, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>✅</span>
+                            <span>Completed: Oct 11, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💉</span>
+                            <span>Units: 2</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>👥</span>
+                            <span>Matched with: 2 donors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="request-card fulfilled">
+                    <div class="request-header">
+                        <span class="blood-type-badge">AB-</span>
+                        <span class="status-badge status-fulfilled">FULFILLED</span>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-item">
+                            <span>👤</span>
+                            <span>Patient: David Chen</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>🏥</span>
+                            <span>Metro Medical Center</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>📅</span>
+                            <span>Posted: Sep 15, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>✅</span>
+                            <span>Completed: Sep 16, 2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>💉</span>
+                            <span>Units: 1</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>👥</span>
+                            <span>Matched with: 1 donor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
