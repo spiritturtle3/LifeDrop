@@ -11,18 +11,18 @@
         <div class="navbar">
             <div class="logo">
                 <div>
-                    <a href="{{ url_for('home')}}"><i class="fa-solid fa-droplet"></i></a>
+                    <a href="{{ url_for('main.home') }}"><i class="fa-solid fa-droplet"></i></a>
                 </div>
                 <div>
-                    <a href="{{ url_for('home')}}"><h2>LifeDrop</h2></a>
+                    <a href="{{ url_for('main.home') }}"><h2>LifeDrop</h2></a>
                 </div>
             </div>
             <div class="nav-links">
                 <ul>
-                    <a href="{{ url_for('home') }}"><li>Home</li></a>
-                    <a href="{{ url_for('about') }}"><li>About</li></a>
-                    <a href="{{ url_for('contact')}}"><li>Contact</li></a>
-                    <a href="{{ url_for('request') }}"><li>Request</li></a>                                  
+                    <a href="{{ url_for('main.home') }}"><li>Home</li></a>
+                    <a href="{{ url_for('main.about') }}"><li>About</li></a>
+                    <a href="{{ url_for('main.contact')}}"><li>Contact</li></a>
+                    <a href="{{ url_for('main.request') }}"><li>Request</li></a>                                  
                 </ul>   
             </div>
         </div>

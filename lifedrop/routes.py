@@ -1,42 +1,40 @@
-from flask import Flask, render_template
+from flask import Blueprint, render_template
 
-app = Flask(__name__)
+main_bp = Blueprint('main', __name__)
 
-@app.route("/")
+@main_bp.route("/")
 def home():
     return render_template('index.html')
 
-@app.route('/about')
+@main_bp.route("/about")
 def about():
     return render_template('about.html')
 
-@app.route('/contact')
+@main_bp.route("/contact")
 def contact():
     return render_template('contact.html')
 
-@app.route('/home/dlogin')
+@main_bp.route("/home/dlogin")
 def dlogin():
     return render_template('donor-login.html')
 
-@app.route('/home/dlogin/dondb')
+@main_bp.route("/home/dlogin/dondb")
 def dondb():
     return render_template('donor-dash.html')
 
-@app.route('/home/hosplog')
+@main_bp.route("/home/hosplog")
 def hosplog():
     return render_template('hospital-login.html')
 
-@app.route('/home/hosplog/hosdb')
+@main_bp.route("/home/hosplog/hosdb")
 def hosdb():
     return render_template('hospitaldb.html')
 
-@app.route('/home/request')
+@main_bp.route("/home/request")
 def request():
     return render_template('request.html')
 
-@app.route('/home/request/rqdb')
+@main_bp.route("/home/request/reqdb")
 def reqdb():
     return render_template('reqdb.html')
 
-if __name__ == "__main__":
-    app.run(debug=True)

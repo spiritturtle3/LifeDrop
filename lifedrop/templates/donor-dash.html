@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donor Dashboard - LifeLink</title>
+    <title>Donor Dashboard - LifeDrop</title>
     <link rel="stylesheet" href="{{url_for('static',filename='donordb.css.css')}}">
 </head>
 <body>
@@ -11,7 +11,7 @@
         <h1>🩸 LifeLink</h1>
         <div class="nav-right">
             <span>Welcome, John Doe</span>
-            <a href="donor-login.html">Logout</a>
+            <a href="{{ url_for('main.dlogin') }}">Logout</a>
         </div>
     </nav>
 
