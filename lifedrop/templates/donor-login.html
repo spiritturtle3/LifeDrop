@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="left-panel">
-            <h1>🩸 Welcome to LifeLink</h1>
+            <h1>🩸 Welcome to LifeDrop</h1>
             <p>Join thousands of donors who are making a difference every day. Your donation can save up to 3 lives.</p>
             <p style="margin-top: 1rem;">Register now and be a hero in someone's life story.</p>
         </div>
@@ -21,68 +21,60 @@
             </div>
 
             <div id="login" class="form-container active">
-                <form action="/donor/login" method="POST">
+                <form action="{{ url_for('main.dlogin') }}" method="POST">
+                    {{ login_form.hidden_tag() }}
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" required placeholder="your@email.com">
+                        {{ login_form.email.label }}
+                        {{ login_form.email(placeholder="your@email.com") }}
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" name="password" required placeholder="••••••••">
+                        {{ login_form.password.label }}
+                        {{ login_form.password(placeholder="••••••••") }}
                     </div>
-                    <button type="submit" class="btn">Login</button>
+                    {{ login_form.submit_login(class="btn") }}
                 </form>
             </div>
 
             <div id="register" class="form-container">
-                <form action="/donor/register" method="POST">
+                <form action="{{ url_for('main.dlogin') }}" method="POST">
+                    {{ register_form.hidden_tag() }}
                     <div class="form-row">
                         <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" name="first_name" required>
+                            {{ register_form.first_name.label }}
+                            {{ register_form.first_name() }}
                         </div>
                         <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" name="last_name" required>
+                            {{ register_form.last_name.label }}
+                            {{ register_form.last_name() }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" required>
+                        {{ register_form.email.label }}
+                        {{ register_form.email() }}
                     </div>
                     <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" name="phone" required>
+                         {{ register_form.phone.label }}
+                         {{ register_form.phone() }}
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Blood Type</label>
-                            <select name="blood_type" required>
-                                <option value="">Select</option>
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                            </select>
+                            {{ register_form.blood_type.label }}
+                            {{ register_form.blood_type() }}
                         </div>
                         <div class="form-group">
-                            <label>Age</label>
-                            <input type="number" name="age" min="18" max="65" required>
+                           {{ register_form.age.label }}
+                           {{ register_form.age() }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>City</label>
-                        <input type="text" name="city" required>
+                        {{ register_form.city.label }}
+                        {{ register_form.city() }}
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" name="password" required>
+                        {{ register_form.password.label }}
+                        {{ register_form.password() }}
                     </div>
-                    <button type="submit" class="btn">Register as Donor</button>
+                    {{ register_form.submit_register(class="btn") }}
                 </form>
             </div>
 

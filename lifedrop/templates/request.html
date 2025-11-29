@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request Blood - LifeLink</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='req.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='req.css') }}">
 </head>
+
 <body>
     <div class="container">
+
         <div class="header">
             <h1>🆘 Request Blood</h1>
             <p>Fill out the form below and we'll connect you with donors immediately</p>
@@ -15,109 +17,138 @@
 
         <div class="alert-box">
             <h3>⚠️ For Emergency Situations</h3>
-            <p>If this is a life-threatening emergency, please call 911 or go to the nearest emergency room immediately.</p>
+            <p>If this is a life-threatening emergency, please call emergency services or go to the nearest hospital immediately.</p>
         </div>
 
-        <form action="/blood-request/submit" method="POST">
+        <form action="{{ url_for('main.blood_request') }}" method="POST">
+            {{ request_form.hidden_tag() }}
+
             <div class="form-group">
-                <label>Patient Name <span class="required">*</span></label>
-                <input type="text" name="patient_name" required>
+                {{ request_form.patient_name.label }} <span class="required">*</span>
+                {{ request_form.patient_name(class="input") }}
+                {% for error in request_form.patient_name.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Blood Type Required <span class="required">*</span></label>
-                    <select name="blood_type" required>
-                        <option value="">Select Blood Type</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                    </select>
+                    {{ request_form.blood_type.label }} <span class="required">*</span>
+                    {{ request_form.blood_type(class="input") }}
+                    {% for error in request_form.blood_type.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
                 <div class="form-group">
-                    <label>Units Needed <span class="required">*</span></label>
-                    <input type="number" name="units" min="1" max="10" required>
+                    {{ request_form.units.label }} <span class="required">*</span>
+                    {{ request_form.units(class="input") }}
+                    {% for error in request_form.units.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Urgency Level <span class="required">*</span></label>
+
                 <div class="urgency-options">
-                    <div class="urgency-option">
-                        <input type="radio" id="urgent" name="urgency" value="urgent" required>
-                        <label for="urgent" class="urgency-label">
-                            🔴 URGENT<br>
-                            <small>(Within 6 hrs)</small>
-                        </label>
-                    </div>
-                    <div class="urgency-option">
-                        <input type="radio" id="soon" name="urgency" value="soon">
-                        <label for="soon" class="urgency-label">
-                            🟡 SOON<br>
-                            <small>(Within 24 hrs)</small>
-                        </label>
-                    </div>
-                    <div class="urgency-option">
-                        <input type="radio" id="scheduled" name="urgency" value="scheduled">
-                        <label for="scheduled" class="urgency-label">
-                            🟢 SCHEDULED<br>
-                            <small>(2-7 days)</small>
-                        </label>
-                    </div>
+
+                    <label for="urgent" class="urgency-option-card">
+                        <input type="radio" name="urgency" id="urgent" value="urgent"
+                            {% if request_form.urgency.data == 'urgent' %}checked{% endif %}>
+                        <div class="urgency-label">
+                            🔴 URGENT<br><small>(Within 6 hrs)</small>
+                        </div>
+                    </label>
+
+                    <label for="soon" class="urgency-option-card">
+                        <input type="radio" name="urgency" id="soon" value="soon"
+                            {% if request_form.urgency.data == 'soon' %}checked{% endif %}>
+                        <div class="urgency-label">
+                            🟡 SOON<br><small>(Within 24 hrs)</small>
+                        </div>
+                    </label>
+
+                    <label for="scheduled" class="urgency-option-card">
+                        <input type="radio" name="urgency" id="scheduled" value="scheduled"
+                            {% if request_form.urgency.data == 'scheduled' %}checked{% endif %}>
+                        <div class="urgency-label">
+                            🟢 SCHEDULED<br><small>(2–7 days)</small>
+                        </div>
+                    </label>
+
                 </div>
+
+                {% for error in request_form.urgency.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
             </div>
 
             <div class="form-group">
-                <label>Hospital/Medical Facility <span class="required">*</span></label>
-                <input type="text" name="hospital" required>
+                {{ request_form.hospital.label }} <span class="required">*</span>
+                {{ request_form.hospital(class="input") }}
+                {% for error in request_form.hospital.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>City <span class="required">*</span></label>
-                    <input type="text" name="city" required>
+                    {{ request_form.city.label }} <span class="required">*</span>
+                    {{ request_form.city(class="input") }}
+                    {% for error in request_form.city.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
                 <div class="form-group">
-                    <label>State <span class="required">*</span></label>
-                    <input type="text" name="state" required>
+                    {{ request_form.state.label }} <span class="required">*</span>
+                    {{ request_form.state(class="input") }}
+                    {% for error in request_form.state.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
                 </div>
             </div>
 
             <div class="form-group">
-                <label>Contact Person Name <span class="required">*</span></label>
-                <input type="text" name="contact_name" required>
+                {{ request_form.contact_name.label }} <span class="required">*</span>
+                {{ request_form.contact_name(class="input") }}
+                {% for error in request_form.contact_name.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Contact Phone <span class="required">*</span></label>
-                    <input type="tel" name="contact_phone" required>
+                    {{ request_form.contact_phone.label }} <span class="required">*</span>
+                    {{ request_form.contact_phone(class="input") }}
+                    {% for error in request_form.contact_phone.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
                 </div>
 
                 <div class="form-group">
-                    <label>Contact Email <span class="required">*</span></label>
-                    <input type="email" name="contact_email" required>
+                    {{ request_form.contact_email.label }} <span class="required">*</span>
+                    {{ request_form.contact_email(class="input") }}
+                    {% for error in request_form.contact_email.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
                 </div>
             </div>
 
             <div class="form-group">
-                <label>Additional Details</label>
-                <textarea name="details" placeholder="Any additional information that might help donors..."></textarea>
+                {{ request_form.details.label }}
+                {{ request_form.details(class="textarea") }}
             </div>
 
-            <button type="submit" class="btn">Submit Blood Request</button>
+            {{ request_form.submit(class="btn") }}
         </form>
 
         <div class="back-link">
-            <a href="{{url_for('main.home') }}">← Back to Home</a>
+            <a href="{{ url_for('main.home') }}">← Back to Home</a>
         </div>
+
     </div>
 </body>
 </html>
