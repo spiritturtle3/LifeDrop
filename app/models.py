@@ -1,6 +1,6 @@
 from app import db
 from datetime import datetime
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model):
     __tablename__ = "users"
@@ -30,6 +30,20 @@ class User(db.Model):
         cascade="all, delete"
     )
 
+    # one-to-one (only if role == hospital)
+    hospital_profile = db.relationship(
+        "HospitalProfile",
+        backref="user",
+        uselist=False,
+        cascade="all, delete"
+    )
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
 
 class DonorProfile(db.Model):
     __tablename__ = "donor_profiles"
@@ -51,6 +65,25 @@ class DonorProfile(db.Model):
 
     age = db.Column(db.Integer, nullable=False)
     is_available = db.Column(db.Boolean, default=True, index=True)
+
+
+class HospitalProfile(db.Model):
+    __tablename__ = "hospital_profiles"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey("users.id"),
+        nullable=False
+    )
+
+    hospital_name = db.Column(db.String(100), nullable=False)
+    registration_number = db.Column(db.String(50), nullable=False)
+    phone = db.Column(db.String(20), nullable=False)
+    address = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(50), nullable=False, index=True)
+    state = db.Column(db.String(50), nullable=False, index=True)
 
 
 class BloodRequest(db.Model):

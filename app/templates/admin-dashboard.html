@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="dashboard-section">
+    <h1>Admin Dashboard</h1>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-number">{{ total_users }}</div>
+            <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-file-medical"></i></div>
+            <div class="stat-number">{{ total_requests }}</div>
+            <div class="stat-label">Blood Requests</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div>
+            <div class="stat-number">{{ total_donors }}</div>
+            <div class="stat-label">Registered Donors</div>
+        </div>
+    </div>
+
+    <section class="admin-actions" style="margin-top: 2rem;">
+        <h2>Management</h2>
+        <ul class="admin-links">
+            <li><a href="#">Manage Users</a></li>
+            <li><a href="#">Manage Blood Requests</a></li>
+            <li><a href="#">Reports & Analytics</a></li>
+        </ul>
+    </section>
+</section>
+
+<style>
+.dashboard-section {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 1.5rem;
+}
+.stat-card {
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+}
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #ef4444;
+}
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+}
+.stat-label {
+    font-size: 1rem;
+    color: #6b7280;
+}
+.admin-actions h2 {
+    margin-bottom: 0.5rem;
+}
+.admin-links {
+    list-style: none;
+    padding: 0;
+}
+.admin-links li {
+    margin-bottom: 0.5rem;
+}
+.admin-links a {
+    color: #ef4444;
+    font-weight: 600;
+    text-decoration: none;
+}
+.admin-links a:hover {
+    text-decoration: underline;
+}
+</style>
+{% endblock %}

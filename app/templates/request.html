@@ -11,168 +11,105 @@
         <div class="left-panel">
             <div class="left-content">
                 <h1>🆘 Request Blood</h1>
-                <p>Connect with thousands of verified donors ready to help. Your request reaches donors in your area instantly.</p>
-                <p>We make it fast and safe to find the blood you need when it matters most.</p>
+                <p>Connect with thousands of verified donors ready to help.</p>
+                <p>Your request reaches donors in your area instantly.</p>
             </div>
         </div>
 
         <div class="right-panel">
             <div class="form-wrapper">
                 <div class="tabs">
-                    <button class="tab active" onclick="showTab(event, 'login')" aria-selected="true">Login</button>
-                    <button class="tab" onclick="showTab(event, 'register')" aria-selected="false">Create Account</button>
+                    <button class="tab active" onclick="showTab(event, 'login')">Login</button>
+                    <button class="tab" onclick="showTab(event, 'register')">Request Blood</button>
                 </div>
 
+                <!-- LOGIN -->
                 <div id="login" class="form-container active">
-                    <form action="{{ url_for('main.blood_request') }}" method="POST">
+                    <form method="POST" action="{{ url_for('main.blood_request') }}">
                         {{ login_form.hidden_tag() }}
 
                         <div class="form-group">
                             {{ login_form.email.label }}
-                            {{ login_form.email(placeholder="your@email.com", class="form-input") }}
-                            {% if login_form.email.errors %}
-                                <span class="error-text">{{ login_form.email.errors[0] }}</span>
-                            {% endif %}
+                            {{ login_form.email(class="form-input") }}
                         </div>
 
                         <div class="form-group">
                             {{ login_form.password.label }}
-                            {{ login_form.password(placeholder="••••••••", class="form-input") }}
-                            {% if login_form.password.errors %}
-                                <span class="error-text">{{ login_form.password.errors[0] }}</span>
-                            {% endif %}
+                            {{ login_form.password(class="form-input") }}
                         </div>
 
                         {{ login_form.submit_login(class="btn btn-primary") }}
                     </form>
                 </div>
 
+                <!-- BLOOD REQUEST -->
                 <div id="register" class="form-container">
-                    <form action="{{ url_for('main.blood_request') }}" method="POST">
+                    <form method="POST" action="{{ url_for('main.blood_request') }}">
                         {{ register_form.hidden_tag() }}
 
-                        <div class="form-section">
-                            <h3>Patient Information</h3>
+                        <div class="form-group">
+                            {{ register_form.patient_name.label }}
+                            {{ register_form.patient_name(class="form-input") }}
+                        </div>
+
+                        <div class="form-row">
                             <div class="form-group">
-                                {{ register_form.patient_name.label }}
-                                {{ register_form.patient_name(placeholder="Full name", class="form-input") }}
-                                {% if register_form.patient_name.errors %}
-                                    <span class="error-text">{{ register_form.patient_name.errors[0] }}</span>
-                                {% endif %}
+                                {{ register_form.blood_type.label }}
+                                {{ register_form.blood_type(class="form-input") }}
                             </div>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    {{ register_form.blood_type.label }}
-                                    {{ register_form.blood_type(class="form-input") }}
-                                    {% if register_form.blood_type.errors %}
-                                        <span class="error-text">{{ register_form.blood_type.errors[0] }}</span>
-                                    {% endif %}
-                                </div>
-                                <div class="form-group">
-                                    {{ register_form.units.label }}
-                                    {{ register_form.units(placeholder="Units needed", class="form-input") }}
-                                    {% if register_form.units.errors %}
-                                        <span class="error-text">{{ register_form.units.errors[0] }}</span>
-                                    {% endif %}
-                                </div>
+                            <div class="form-group">
+                                {{ register_form.units.label }}
+                                {{ register_form.units(class="form-input") }}
                             </div>
                         </div>
 
-                        <div class="form-section">
-                            <h3>Urgency & Details</h3>
-                            <div class="form-group">
-                                <label>{{ register_form.urgency.label.text }}</label>
-                                <div class="urgency-options">
-                                    {% for subfield in register_form.urgency %}
-                                    <div class="urgency-option">
-                                        {{ subfield }}
-                                        <label for="{{ subfield.id }}" class="urgency-label">{{ subfield.label.text }}</label>
-                                    </div>
-                                    {% endfor %}
+                        <div class="form-group">
+                            <label>{{ register_form.urgency.label.text }}</label>
+                            {% for subfield in register_form.urgency %}
+                                <div>
+                                    {{ subfield }} {{ subfield.label.text }}
                                 </div>
-                                {% if register_form.urgency.errors %}
-                                    <span class="error-text">{{ register_form.urgency.errors[0] }}</span>
-                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        <div class="form-group">
+                            {{ register_form.hospital.label }}
+                            {{ register_form.hospital(class="form-input") }}
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                {{ register_form.city.label }}
+                                {{ register_form.city(class="form-input") }}
                             </div>
 
                             <div class="form-group">
-                                {{ register_form.details.label }}
-                                <textarea name="details" placeholder="Additional medical information..." class="form-input">{{ register_form.details.data or '' }}</textarea>
-                                {% if register_form.details.errors %}
-                                    <span class="error-text">{{ register_form.details.errors[0] }}</span>
-                                {% endif %}
+                                {{ register_form.state.label }}
+                                {{ register_form.state(class="form-input") }}
                             </div>
                         </div>
 
-                        <div class="form-section">
-                            <h3>Hospital & Location</h3>
+                        <div class="form-group">
+                            {{ register_form.contact_name.label }}
+                            {{ register_form.contact_name(class="form-input") }}
+                        </div>
+
+                        <div class="form-row">
                             <div class="form-group">
-                                {{ register_form.hospital.label }}
-                                {{ register_form.hospital(placeholder="Hospital name", class="form-input") }}
-                                {% if register_form.hospital.errors %}
-                                    <span class="error-text">{{ register_form.hospital.errors[0] }}</span>
-                                {% endif %}
+                                {{ register_form.contact_phone.label }}
+                                {{ register_form.contact_phone(class="form-input") }}
                             </div>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    {{ register_form.city.label }}
-                                    {{ register_form.city(placeholder="City", class="form-input") }}
-                                    {% if register_form.city.errors %}
-                                        <span class="error-text">{{ register_form.city.errors[0] }}</span>
-                                    {% endif %}
-                                </div>
-                                <div class="form-group">
-                                    {{ register_form.state.label }}
-                                    {{ register_form.state(placeholder="State", class="form-input") }}
-                                    {% if register_form.state.errors %}
-                                        <span class="error-text">{{ register_form.state.errors[0] }}</span>
-                                    {% endif %}
-                                </div>
+                            <div class="form-group">
+                                {{ register_form.contact_email.label }}
+                                {{ register_form.contact_email(class="form-input") }}
                             </div>
                         </div>
 
-                        <div class="form-section">
-                            <h3>Contact Person</h3>
-                            <div class="form-group">
-                                {{ register_form.contact_name.label }}
-                                {{ register_form.contact_name(placeholder="Contact person's name", class="form-input") }}
-                                {% if register_form.contact_name.errors %}
-                                    <span class="error-text">{{ register_form.contact_name.errors[0] }}</span>
-                                {% endif %}
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    {{ register_form.contact_phone.label }}
-                                    {{ register_form.contact_phone(placeholder="Phone number", class="form-input") }}
-                                    {% if register_form.contact_phone.errors %}
-                                        <span class="error-text">{{ register_form.contact_phone.errors[0] }}</span>
-                                    {% endif %}
-                                </div>
-                                <div class="form-group">
-                                    {{ register_form.contact_email.label }}
-                                    {{ register_form.contact_email(placeholder="email@example.com", class="form-input") }}
-                                    {% if register_form.contact_email.errors %}
-                                        <span class="error-text">{{ register_form.contact_email.errors[0] }}</span>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Account Password</h3>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" name="password" placeholder="••••••••" class="form-input" required>
-                                <span class="help-text">Minimum 6 characters</span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="confirm_password">Confirm Password</label>
-                                <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••••" class="form-input" required>
-                            </div>
+                        <div class="form-group">
+                            {{ register_form.details.label }}
+                            {{ register_form.details(class="form-input") }}
                         </div>
 
                         {{ register_form.submit(class="btn btn-primary btn-large") }}
@@ -187,20 +124,12 @@
     </div>
 
     <script>
-        function showTab(event, tabName) {
-            event.preventDefault();
-            const tabs = document.querySelectorAll('.tab');
-            const containers = document.querySelectorAll('.form-container');
-
-            tabs.forEach(t => {
-                t.classList.remove('active');
-                t.setAttribute('aria-selected', 'false');
-            });
-            containers.forEach(c => c.classList.remove('active'));
-
-            event.target.classList.add('active');
-            event.target.setAttribute('aria-selected', 'true');
-            document.getElementById(tabName).classList.add('active');
+        function showTab(e, tab) {
+            e.preventDefault();
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.form-container').forEach(c => c.classList.remove('active'));
+            e.target.classList.add('active');
+            document.getElementById(tab).classList.add('active');
         }
     </script>
 </body>

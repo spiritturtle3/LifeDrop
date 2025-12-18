@@ -14,7 +14,7 @@
     </div>
     <div class="nav-right">
         <span class="welcome-text">Request Dashboard</span>
-        <a href="{{ url_for('main.home') }}" class="logout-link">Logout</a>
+        <a href="{{ url_for('main.logout') }}" class="logout-link">Logout</a>
     </div>
 </nav>
 
@@ -22,19 +22,19 @@
 
     <div class="welcome-card">
         <h2>Blood Request Status</h2>
-        <p>Below are the donors matched for your request.</p>
+        <p>Your submitted blood requests are shown below.</p>
     </div>
 
     <!-- STATS -->
     <div class="stats-grid">
         <div class="stat-card">
             <div class="stat-icon">🔔</div>
-            <div class="stat-number">1</div>
-            <div class="stat-label">Active Request</div>
+            <div class="stat-number">{{ active_requests }}</div>
+            <div class="stat-label">Active Requests</div>
         </div>
         <div class="stat-card">
             <div class="stat-icon">👥</div>
-            <div class="stat-number">{{ donors|length }}</div>
+            <div class="stat-number">{{ donors }}</div>
             <div class="stat-label">Matched Donors</div>
         </div>
     </div>
@@ -43,76 +43,33 @@
         <a href="{{ url_for('main.blood_request') }}" class="btn">+ New Blood Request</a>
     </div>
 
-    <!-- ACTIVE REQUEST -->
-    {% if request %}
+    {% if requests %}
     <div class="section">
-        <h3>🔴 Active Request</h3>
+        <h3>📋 Your Requests</h3>
 
-        <div class="request-card active">
+        {% for req in requests %}
+        <div class="request-card">
             <div class="request-header">
-                <span class="blood-type-badge">{{ request.blood_type }}</span>
-                <span class="status-badge status-active">
-                    {{ request.status|upper }}
+                <span class="blood-type-badge">{{ req.blood_type }}</span>
+                <span class="status-badge">
+                    {{ req.status|upper }}
                 </span>
             </div>
 
             <div class="request-details">
-                <div class="detail-item">
-                    <span>👤</span>
-                    <span>Patient: {{ request.patient_name }}</span>
-                </div>
-                <div class="detail-item">
-                    <span>🏥</span>
-                    <span>{{ request.hospital }}</span>
-                </div>
-                <div class="detail-item">
-                    <span>📍</span>
-                    <span>{{ request.city }}, {{ request.state }}</span>
-                </div>
-                <div class="detail-item">
-                    <span>💉</span>
-                    <span>Units Needed: {{ request.units_needed }}</span>
-                </div>
-                <div class="detail-item">
-                    <span>📞</span>
-                    <span>Contact: {{ request.contact_phone }}</span>
-                </div>
-            </div>
-
-            <!-- MATCHED DONORS -->
-            <div class="donor-responses">
-                <h4>💚 Matched Donors ({{ donors|length }})</h4>
-
-                {% if donors %}
-                <div class="donor-list">
-                    {% for d in donors %}
-                    <div class="donor-item">
-                        <div class="donor-info">
-                            <div class="donor-avatar">
-                                {{ d.first_name[0] }}{{ d.last_name[0] }}
-                            </div>
-                            <div>
-                                <strong>{{ d.first_name }} {{ d.last_name }}</strong>
-                                <div style="font-size: 0.875rem; color: #6b7280;">
-                                    {{ d.blood_type }} • {{ d.city }} • Available
-                                </div>
-                            </div>
-                        </div>
-                        <button class="contact-btn">
-                            {{ d.phone }}
-                        </button>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% else %}
-                    <p>No donors available yet.</p>
-                {% endif %}
+                <div class="detail-item">👤 Patient: {{ req.patient_name }}</div>
+                <div class="detail-item">🏥 {{ req.hospital }}</div>
+                <div class="detail-item">📍 {{ req.city }}, {{ req.state }}</div>
+                <div class="detail-item">💉 Units Needed: {{ req.units_needed }}</div>
+                <div class="detail-item">📞 Contact: {{ req.contact_phone }}</div>
             </div>
         </div>
+        {% endfor %}
     </div>
+    {% else %}
+        <p>No blood requests submitted yet.</p>
     {% endif %}
 
 </div>
-
 </body>
 </html>

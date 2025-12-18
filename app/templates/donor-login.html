@@ -85,14 +85,14 @@
         </div>
     </div>
 
-    <script>
-        function showTab(tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
-            
-            event.target.classList.add('active');
-            document.getElementById(tab).classList.add('active');
-        }
-    </script>
+<script>
+function showTab(tab) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
+
+    document.querySelector(`[onclick="showTab('${tab}')"]`).classList.add('active');
+    document.getElementById(tab).classList.add('active');
+}
+</script>
 </body>
 </html>

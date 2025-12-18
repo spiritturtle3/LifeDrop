@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Login - LifeDrop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='temp.css') }}" />
+</head>
+<body>
+    <div class="container auth-container">
+        <div class="logo">
+            <a href="{{ url_for('main.home') }}"><i class="fa-solid fa-droplet"></i> <h2>LifeDrop Admin</h2></a>
+        </div>
+
+        <div class="auth-form">
+            <h1>Admin Login</h1>
+            <form method="POST" action="{{ url_for('main.admin_login') }}">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.email.label }}
+                    {{ form.email(class="form-input", placeholder="admin@example.com") }}
+                    {% if form.email.errors %}
+                        <span class="error-text">{{ form.email.errors[0] }}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label }}
+                    {{ form.password(class="form-input", placeholder="••••••••") }}
+                    {% if form.password.errors %}
+                        <span class="error-text">{{ form.password.errors[0] }}</span>
+                    {% endif %}
+                </div>
+                {{ form.submit_login(class="btn btn-primary btn-block") }}
+            </form>
+            <div class="back-link" style="margin-top: 1rem;">
+                <a href="{{ url_for('main.home') }}">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

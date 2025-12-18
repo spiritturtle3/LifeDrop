@@ -53,10 +53,14 @@ class DonorRegisterForm(FlaskForm):
     blood_type = SelectField(
         "Blood Type",
         choices=[
-            ("A+", "A+"), ("A-", "A-"),
-            ("B+", "B+"), ("B-", "B-"),
-            ("AB+", "AB+"), ("AB-", "AB-"),
-            ("O+", "O+"), ("O-", "O-")
+            ("A+", "A+"),
+            ("A-", "A-"),
+            ("B+", "B+"),
+            ("B-", "B-"),
+            ("AB+", "AB+"),
+            ("AB-", "AB-"),
+            ("O+", "O+"),
+            ("O-", "O-")
         ],
         validators=[DataRequired()]
     )
@@ -127,10 +131,14 @@ class BloodRequestForm(FlaskForm):
     blood_type = SelectField(
         "Blood Type Required",
         choices=[
-            ("A+", "A+"), ("A-", "A-"),
-            ("B+", "B+"), ("B-", "B-"),
-            ("AB+", "AB+"), ("AB-", "AB-"),
-            ("O+", "O+"), ("O-", "O-")
+            ("A+", "A+"),
+            ("A-", "A-"),
+            ("B+", "B+"),
+            ("B-", "B-"),
+            ("AB+", "AB+"),
+            ("AB-", "AB-"),
+            ("O+", "O+"),
+            ("O-", "O-")
         ],
         validators=[DataRequired()]
     )
@@ -197,3 +205,66 @@ class BloodRequestForm(FlaskForm):
 
     submit = SubmitField("Submit Blood Request")
 
+
+# ===================== HOSPITAL FORMS =====================
+
+class HospitalRegisterForm(FlaskForm):
+    hospital_name = StringField(
+        "Hospital Name",
+        validators=[DataRequired(), Length(min=2, max=100)]
+    )
+    registration_number = StringField(
+        "Registration Number",
+        validators=[DataRequired()]
+    )
+    email = StringField(
+        "Email",
+        validators=[DataRequired(), Email()]
+    )
+    phone = StringField(
+        "Phone Number",
+        validators=[DataRequired()]
+    )
+    address = StringField(
+        "Address",
+        validators=[DataRequired()]
+    )
+    city = StringField(
+        "City",
+        validators=[DataRequired()]
+    )
+    state = StringField(
+        "State",
+        validators=[DataRequired()]
+    )
+    password = PasswordField(
+        "Password",
+        validators=[DataRequired(), Length(min=6)]
+    )
+    submit_register = SubmitField("Register Hospital")
+
+
+class HospitalLoginForm(FlaskForm):
+    email = StringField(
+        "Email",
+        validators=[DataRequired(), Email()]
+    )
+    password = PasswordField(
+        "Password",
+        validators=[DataRequired()]
+    )
+    submit_login = SubmitField("Login")
+
+
+# ===================== ADMIN FORM =====================
+
+class AdminLoginForm(FlaskForm):
+    email = StringField(
+        "Email",
+        validators=[DataRequired(), Email()]
+    )
+    password = PasswordField(
+        "Password",
+        validators=[DataRequired()]
+    )
+    submit_login = SubmitField("Login")
