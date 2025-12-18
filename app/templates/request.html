@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requester Login - LifeDrop</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='req.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1>🆘 Request Blood</h1>
+            <p>Connect with thousands of donors ready to help. Your request reaches verified donors in your area instantly.</p>
+            <p style="margin-top: 1rem;">Register now and get the help you need when it matters most.</p>
+        </div>
+
+        <div class="right-panel">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('login')">Login</button>
+                <button class="tab" onclick="showTab('register')">Register</button>
+            </div>
+
+            <div id="login" class="form-container active">
+                <form action="{{ url_for('main.blood_request') }}" method="POST">
+                    {{ login_form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ login_form.email.label }}
+                        {{ login_form.email(placeholder="your@email.com") }}
+                    </div>
+                    <div class="form-group">
+                        {{ login_form.password.label }}
+                        {{ login_form.password(placeholder="••••••••") }}
+                    </div>
+                    {{ login_form.submit_login(class="btn") }}
+                </form>
+            </div>
+
+            <div id="register" class="form-container">
+                <form action="{{ url_for('main.blood_request') }}" method="POST">
+                    {{ register_form.hidden_tag() }}
+                    
+                    <div class="form-group">
+                        {{ register_form.patient_name.label }}
+                        {{ register_form.patient_name(placeholder="Patient's full name") }}
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            {{ register_form.blood_type.label }}
+                            {{ register_form.blood_type() }}
+                        </div>
+                        <div class="form-group">
+                            {{ register_form.units.label }}
+                            {{ register_form.units(placeholder="1-10") }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{ register_form.urgency.label.text }}</label>
+                        <div class="urgency-options">
+                            {% for subfield in register_form.urgency %}
+                            <div class="urgency-option">
+                                {{ subfield }}
+                                <label for="{{ subfield.id }}" class="urgency-label">{{ subfield.label.text }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ register_form.hospital.label }}
+                        {{ register_form.hospital(placeholder="Hospital name") }}
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            {{ register_form.city.label }}
+                            {{ register_form.city(placeholder="City") }}
+                        </div>
+                        <div class="form-group">
+                            {{ register_form.state.label }}
+                            {{ register_form.state(placeholder="State") }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ register_form.contact_name.label }}
+                        {{ register_form.contact_name(placeholder="Contact person's name") }}
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            {{ register_form.contact_phone.label }}
+                            {{ register_form.contact_phone(placeholder="Phone number") }}
+                        </div>
+                        <div class="form-group">
+                            {{ register_form.contact_email.label }}
+                            {{ register_form.contact_email(placeholder="email@example.com") }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ register_form.details.label }}
+                        <textarea name="details" placeholder="Any additional information...">{{ register_form.details.data or '' }}</textarea>
+                    </div>
+
+                    {{ register_form.submit(class="btn") }}
+                </form>
+            </div>
+
+            <div class="back-link">
+                <a href="{{ url_for('main.home') }}">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+        }
+    </script>
+</body>
+</html>
