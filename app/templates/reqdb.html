@@ -9,10 +9,12 @@
 <body>
 
 <nav class="navbar">
-    <h1>🩸 LifeDrop</h1>
+    <div class="navbar-brand">
+        <h1>🩸 LifeDrop</h1>
+    </div>
     <div class="nav-right">
-        <span>Request Dashboard</span>
-        <a href="{{ url_for('main.home') }}">Logout</a>
+        <span class="welcome-text">Request Dashboard</span>
+        <a href="{{ url_for('main.home') }}" class="logout-link">Logout</a>
     </div>
 </nav>
 

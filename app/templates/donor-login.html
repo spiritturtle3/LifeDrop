@@ -25,13 +25,13 @@
                     {{ login_form.hidden_tag() }}
                     <div class="form-group">
                         {{ login_form.email.label }}
-                        {{ login_form.email(placeholder="your@email.com") }}
+                        {{ login_form.email(placeholder="your@email.com", class="form-input") }}
                     </div>
                     <div class="form-group">
                         {{ login_form.password.label }}
-                        {{ login_form.password(placeholder="••••••••") }}
+                        {{ login_form.password(placeholder="••••••••", class="form-input") }}
                     </div>
-                    {{ login_form.submit_login(class="btn") }}
+                    {{ login_form.submit_login(class="btn btn-primary") }}
                 </form>
             </div>
 
@@ -41,40 +41,41 @@
                     <div class="form-row">
                         <div class="form-group">
                             {{ register_form.first_name.label }}
-                            {{ register_form.first_name() }}
+                            {{ register_form.first_name(placeholder="First name", class="form-input") }}
                         </div>
                         <div class="form-group">
                             {{ register_form.last_name.label }}
-                            {{ register_form.last_name() }}
+                            {{ register_form.last_name(placeholder="Last name", class="form-input") }}
                         </div>
                     </div>
                     <div class="form-group">
                         {{ register_form.email.label }}
-                        {{ register_form.email() }}
+                        {{ register_form.email(placeholder="your@email.com", class="form-input") }}
                     </div>
                     <div class="form-group">
                          {{ register_form.phone.label }}
-                         {{ register_form.phone() }}
+                         {{ register_form.phone(placeholder="Phone number", class="form-input") }}
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             {{ register_form.blood_type.label }}
-                            {{ register_form.blood_type() }}
+                            {{ register_form.blood_type(class="form-input") }}
                         </div>
                         <div class="form-group">
                            {{ register_form.age.label }}
-                           {{ register_form.age() }}
+                           {{ register_form.age(placeholder="Age", class="form-input") }}
                         </div>
                     </div>
                     <div class="form-group">
                         {{ register_form.city.label }}
-                        {{ register_form.city() }}
+                        {{ register_form.city(placeholder="City", class="form-input") }}
                     </div>
                     <div class="form-group">
                         {{ register_form.password.label }}
-                        {{ register_form.password() }}
+                        {{ register_form.password(placeholder="••••••••", class="form-input") }}
+                        <span class="help-text">Minimum 6 characters</span>
                     </div>
-                    {{ register_form.submit_register(class="btn") }}
+                    {{ register_form.submit_register(class="btn btn-primary") }}
                 </form>
             </div>
 

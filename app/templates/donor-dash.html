@@ -4,134 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donor Dashboard - LifeDrop</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='donordb.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='donordb.css') }}">
 </head>
 <body>
     <nav class="navbar">
-        <h1>🩸 LifeLink</h1>
+        <div class="navbar-brand">
+            <h1>🩸 LifeDrop</h1>
+        </div>
         <div class="nav-right">
-            <span>Welcome, John Doe</span>
-            <a href="{{ url_for('main.dlogin') }}">Logout</a>
+            <span class="welcome-text">Welcome Back</span>
+            <a href="{{ url_for('main.home') }}" class="logout-link">Logout</a>
         </div>
     </nav>
 
     <div class="container">
         <div class="welcome-card">
-            <h2>Welcome Back, John!</h2>
-            <p>Thank you for being a life saver. Your last donation was 45 days ago.</p>
+            <div class="welcome-content">
+                <h2>Thank you for being a life saver!</h2>
+                <p>Your contributions save lives every day.</p>
+            </div>
         </div>
 
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-icon">💉</div>
-                <div class="stat-number">8</div>
-                <div class="stat-label">Total Donations</div>
+                <div class="stat-content">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Total Donations</div>
+                </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon">❤️</div>
-                <div class="stat-number">24</div>
-                <div class="stat-label">Lives Saved</div>
+                <div class="stat-content">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Lives Saved</div>
+                </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon">🩸</div>
-                <div class="stat-number">O+</div>
-                <div class="stat-label">Your Blood Type</div>
+                <div class="stat-content">
+                    <div class="stat-number">O+</div>
+                    <div class="stat-label">Your Blood Type</div>
+                </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon">📅</div>
-                <div class="stat-number">15</div>
-                <div class="stat-label">Days Until Next Eligible</div>
+                <div class="stat-content">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Days Until Eligible</div>
+                </div>
             </div>
         </div>
 
         <div class="section">
-            <h3>🔔 Urgent Blood Requests Near You</h3>
+            <div class="section-header">
+                <h3>🔴 Urgent Blood Requests</h3>
+                <p class="section-subtitle">Matching your blood type in your area</p>
+            </div>
             <div class="request-list">
-                <div class="request-card">
+                <div class="request-card request-urgent">
                     <div class="request-header">
-                        <span class="blood-type-badge">O+</span>
-                        <span class="urgent-badge">URGENT</span>
+                        <div class="header-left">
+                            <span class="blood-type-badge">O+</span>
+                            <span class="urgency-badge urgency-critical">CRITICAL</span>
+                        </div>
                     </div>
                     <div class="request-details">
                         <div class="detail-item">
-                            <span>🏥</span>
+                            <span class="detail-icon">🏥</span>
                             <span>City General Hospital</span>
                         </div>
                         <div class="detail-item">
-                            <span>📍</span>
+                            <span class="detail-icon">📍</span>
                             <span>2.5 km away</span>
                         </div>
                         <div class="detail-item">
-                            <span>⏰</span>
-                            <span>Needed: Within 6 hours</span>
+                            <span class="detail-icon">⏰</span>
+                            <span>Within 6 hours</span>
                         </div>
                         <div class="detail-item">
-                            <span>💉</span>
-                            <span>Units: 3</span>
+                            <span class="detail-icon">💉</span>
+                            <span>3 units needed</span>
                         </div>
                     </div>
-                    <button class="btn">I Can Donate</button>
+                    <button class="btn btn-donate">Contact Hospital</button>
                 </div>
 
                 <div class="request-card">
                     <div class="request-header">
-                        <span class="blood-type-badge">O+</span>
+                        <div class="header-left">
+                            <span class="blood-type-badge">O+</span>
+                            <span class="urgency-badge urgency-high">HIGH</span>
+                        </div>
                     </div>
                     <div class="request-details">
                         <div class="detail-item">
-                            <span>🏥</span>
+                            <span class="detail-icon">🏥</span>
                             <span>St. Mary's Hospital</span>
                         </div>
                         <div class="detail-item">
-                            <span>📍</span>
+                            <span class="detail-icon">📍</span>
                             <span>5.8 km away</span>
                         </div>
                         <div class="detail-item">
-                            <span>⏰</span>
-                            <span>Needed: Within 24 hours</span>
+                            <span class="detail-icon">⏰</span>
+                            <span>Within 24 hours</span>
                         </div>
                         <div class="detail-item">
-                            <span>💉</span>
-                            <span>Units: 2</span>
+                            <span class="detail-icon">💉</span>
+                            <span>2 units needed</span>
                         </div>
                     </div>
-                    <button class="btn">I Can Donate</button>
+                    <button class="btn btn-donate">Contact Hospital</button>
                 </div>
             </div>
         </div>
 
         <div class="section">
-            <h3>📋 Your Donation History</h3>
-            <table class="history-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Hospital</th>
-                        <th>Units</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Oct 10, 2024</td>
-                        <td>City General Hospital</td>
-                        <td>1 unit</td>
-                        <td>✅ Completed</td>
-                    </tr>
-                    <tr>
-                        <td>Aug 5, 2024</td>
-                        <td>St. Mary's Hospital</td>
-                        <td>1 unit</td>
-                        <td>✅ Completed</td>
-                    </tr>
-                    <tr>
-                        <td>Jun 1, 2024</td>
-                        <td>Metro Medical Center</td>
-                        <td>1 unit</td>
-                        <td>✅ Completed</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="section-header">
+                <h3>📋 Donation History</h3>
+                <p class="section-subtitle">Your contribution timeline</p>
+            </div>
+            <div class="table-wrapper">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Hospital</th>
+                            <th>Units</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Oct 10, 2024</td>
+                            <td>City General Hospital</td>
+                            <td>1 unit</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Aug 5, 2024</td>
+                            <td>St. Mary's Hospital</td>
+                            <td>1 unit</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Jun 1, 2024</td>
+                            <td>Metro Medical Center</td>
+                            <td>1 unit</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
