@@ -77,13 +77,13 @@ def dlogin():
         user = User.query.filter_by(email=login_form.email.data, role="donor").first()
         if not user or not user.check_password(login_form.password.data):
             flash("Invalid email or password", "danger")
-            return redirect(url_for("main.donor_login"))
+            return redirect(url_for("main.dlogin"))
         login_user(user)
         return redirect(url_for("main.donor_dashboard"))
     if register_form.submit_register.data and register_form.validate_on_submit():
         if User.query.filter_by(email=register_form.email.data).first():
             flash("Email already registered", "danger")
-            return redirect(url_for("main.donor_login"))
+            return redirect(url_for("main.dlogin"))
         user = User(email=register_form.email.data, role="donor")
         user.set_password(register_form.password.data)
         db.session.add(user)
